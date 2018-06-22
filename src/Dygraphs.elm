@@ -49,35 +49,35 @@ data val =
                 conv row =
                     List.map JE.float row
                     |> JE.list
-                rows' =
+                rows_ =
                     List.map conv rows
                     |> JE.list
             in
-                Attributes.property "file" rows'
+                Attributes.property "file" rows_
         Slices rows ->
             let
                 conv (date, row) =
                     (Native.Dygraphs.packDate date) :: List.map JE.float row
                     |> JE.list
-                rows' =
+                rows_ =
                     List.map conv rows
                     |> JE.list
             in
-                Attributes.property "file" rows'
+                Attributes.property "file" rows_
 
 {-| Set labels of plotted lines.
 -}
 labels : List String -> Attribute msg
 labels vals =
-    let vals' = List.map JE.string vals |> JE.list
-    in Attributes.property "labels" vals'
+    let vals_ = List.map JE.string vals |> JE.list
+    in Attributes.property "labels" vals_
 
 {-| Set labels of plotted lines.
 -}
 drawPoints : Bool -> Attribute msg
 drawPoints flag =
-    let flag' = JE.bool flag
-    in Attributes.property "drawPoints" flag'
+    let flag_ = JE.bool flag
+    in Attributes.property "drawPoints" flag_
 
 {-| Creates `Html` instance with Dygraph attached to it.
 
